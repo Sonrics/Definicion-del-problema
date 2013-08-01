@@ -1,0 +1,359 @@
+
+
+
+        Universidad Politécnica de Chiapas.
+
+
+
+Profesora:
+Aremy Olaya Virrueta Gordillo
+
+Carrera:
+Ingeniería en Desarrollo de Software.
+
+Grupo:
+6to IDS A.
+
+Materia:
+Análisis de Sistemas
+
+
+
+
+
+
+
+
+
+
+
+
+Esquema conceptual.
+ 
+
+
+
+
+
+Diccionario de Clases o Datos.
+
+CLASE  DESCRIPCION
+Usuario	La clase usuario se denomina por medio del nombre y carrera, pero también puede incluir atributos como prototipo, nombre del proyecto y sobre todo el tipo de publicación que se ha de realizar.
+Independientemente de las características anteriores, la clase usuario puede heredar métodos para autenticar, generar un cronograma (en caso de alumno o profesor) y también el control del seguimiento que realiza de acuerdo a cada proyecto de investigación, de igual manera permite heredar métodos que nos haga más fácil actualizar los datos así como  el llenado de la solicitud y por lo consiguiente el envió de dicha solicitud. 
+Alumno	Para poder tener acceso al sistema el alumno necesita ser autenticado, teniendo como referencia la matrícula de dicho alumno ya que es un atributo que identifica alumno de profesor así como alumno de administrador. En ella se permite  la realización de un proyecto asignando datos correspondientes de dicho proyecto, así como datos personales. La clase está heredando atributos como el nombre, nombre de proyecto, patente y prototipo, por lo tanto también métodos correspondientes al llenado y autentificación del proyecto (llenar solicitud, generar cronograma y enviar solicitud). 
+Profesor	El proyecto del alumno es evaluado por el profesor, teniendo en cuenta que dicho profesor se denomina por una clave y un RFC. Estos atributos nos ayudan a identificar al profesor de entre los demás usuarios. El profesor al igual que el alumno también puede llenar una solicitud para el registro de un proyecto y de igual manera enviar dicha solicitud así como generar su cronograma con respecto a su avance del proyecto. El profesor necesita ser autenticado para poder realizar lo mencionado.
+Administrador	El sistema GPI (Gestión de Proyectos de Investigación), proporciona al administrador el acceso a la evaluación del proyecto, así como él envió de proyectos. Permite acceder al administrador siempre y cuando sea autenticado con el nombre correspondiente.
+Proyecto	GPI nos muestra una serie de requisitos que el proyecto debe contener para poder realizar su registro,  dichas características son correspondientes al proyecto (el tipo de proyecto y un financiamiento)  y a datos personales del participante (nombre, país, código postal, fax, email, estado, municipio, etc.), así como también incluye el nombre del asesor técnico que tendrá a cargo el proyecto de investigación. 
+Evidencia	Un proyecto puede tener una evidencia que identifique la fecha de publicación, fecha de entrega y el tipo de publicación que se está generando con respecto al proyecto.
+
+
+Diagramas BPMN
+
+Refinamiento de los casos de usos
+Normales
+Nombre del caso de uso	Enviar_solicitud_registro_PI
+Actores Participantes	Alumno/profesor
+Flujos de eventos	1.- Autenticar usuario del sistema GPI.
+2.- Se llenara el formulario de bitácora.
+3.- Se realizara el llenado de la descripción del proyecto a partir de la etiqueta textarea.
+4.- GPI valida información recibida. 
+5.- GPI guarda información.
+Condición de entrada	El alumno y profesor deben estar autentificado en el sistema GPI
+Condición de salida	GPI almacena la solicitud de registro un PI
+Requerimientos de calidad 	El alumno y profesor deben contar con la información requerida completa
+
+Nombre del escenario	Enviar_solicitud_registro_PI
+Actores participantes	Alumno/profesor
+Flujos de eventos	1.	El alumno o profesor se autentica en el sistema GPI (Gestión de proyectos de Investigación).
+2.	El alumno o profesor llenar el formulario llamado “bitácora”.
+3.	El alumno o profesor realiza la descripción de su proyecto a partir de un formato presentado por GPI.
+4.	GPI valida la información recibida por alumnos o profesores.
+5.	GPI guarda la información de alumnos o profesores. 
+
+
+
+
+
+
+
+
+Nombre del caso de uso	Evaluar_alumno
+Actores Participantes	Profesor
+Flujos de eventos	1.-  Profesor debe comprobar datos  recibidos del alumno.
+2.- Profesor debe discernir entre rechazar o validar el diseño del alumno.
+3.- Profesor envía resultado a GPI.
+4.- GPI valida información.
+5.- GPI guarda información.
+6.- GPI envía notificación de la evaluación que ha realizado el profesor al alumno.
+Condición de entrada	Profesor deben estar autentificado en el sistema GPI.
+Condición de salida	GPI almacena la información de notificación para validación PI.
+Requerimientos de calidad 	Alumno envió datos, para ser evaluados.
+
+
+Nombre del escenario	Evaluar_alumno
+Actores participantes	Profesor
+Flujos de eventos	1.	El profesor comprueba la información recibida del alumno.
+2.	El profesor aprueba o rechaza la información del alumno con respecto al proyecto.
+3.	Cuando el profesor da el visto bueno, envía la información del proyecto a GPI.
+4.	El profesor espera notificación de entrega.
+5.	GPI guarda información que se le ha entregado por el profesor.
+6.	GPI envía al profesor una notificación con respecto a la evaluación.
+	
+
+
+
+
+
+
+
+
+
+
+Nombre del caso de uso	Modelar_PI
+Actores Participantes	Alumno/Profesor
+Flujos de eventos	1.- Llenar formulario de registro con los campos nombre, apellido etc.
+2.- Definir cronograma a partir de un componente visual
+3.- Enviar la información a GPI
+4.- GPI valida la información recibida
+5.- GPI guarda información
+Condición de entrada	El alumno debe estar autentificado en el sistema GPI
+Condición de salida	GPI almacena la solicitud de un PI
+Requerimientos de calidad 	El alumno debe contar con la información requerida completa
+
+
+Nombre del escenario	Modelar_PI
+Actores participantes	Alumno/Profesor
+Flujos de eventos	1.	El alumno o profesor llena el formulario de registro con datos personales.
+2.	El alumno o profesor organiza un cronograma y se presenta a partir de la interfaz mostrada.
+3.	Alumno o profesor envía a GPI información correspondiente  a  su cronograma.
+4.	GPI valida información recibida por alumno o profesor.
+5.	GPI guarda información de alumno o profesor.
+  
+
+
+
+
+
+
+
+
+
+Nombre del caso de uso	Seguimiento_de_cronogramas_publicados.
+Actores Participantes	Administrador
+Flujos de eventos	1.- Administrador recibe notificación de avance cronológicamente.
+2.- Administrador sigue las fechas específicas a través de la información presentada.
+3.-  Administrador notifica la entrega.
+4.- Administrador evalúa cronograma.
+5.- Administrador envía datos a GPI
+6.- GPI valida información.
+7.- GPI guarda información.
+Condición de entrada	Administrador debe estar autentificado en el sistema GPI.
+Condición de salida	GPI almacena resultado de evaluación.
+Requerimientos de calidad 	Participante envió notificación de cronograma.
+
+
+Nombre del escenario	Seguimiento_de_cronogramas_publicados.
+Actores participantes	Administrador
+Flujos de eventos	1.	El administrador recibe una notificación de avance cronológico.
+2.	Administrador sigue las fechas especificadas a través de la información enviada.
+3.	El administrador notifica  la entrega de información.
+4.	Administrador evalúa el cronograma presentado por los participantes.
+5.	Administrador se coordinada con GPI para validar información.
+6.	GPI valida la información del administrador.
+7.	GPI guarda información recibida del administrador.
+
+
+
+
+
+
+
+
+
+
+Nombre del caso de uso	Registro de evidencias.
+Actores Participantes	Administrador
+Flujos de eventos	1.- Administrador sube evidencia al sistema GPI.
+2.- Administrador actualiza cronograma.
+3.-  Administrador recibe notificación de cambios
+4.- GPI guarda información.
+Condición de entrada	Administrador debe estar autentificado en el sistema GPI.
+Condición de salida	GPI almacena resultado de cambios.
+Requerimientos de calidad 	Administrador debe contar con la información completa
+
+
+
+Nombre del escenario	Registro de evidencias.
+Actores participantes	Administrador
+Flujos de eventos	1.	Administrador carga datos de evidencia en GPI.
+2.	El administrador actualiza cronograma
+3.	Administración recibe notificación por cambios nuevos.
+4.	GPI guarda información proporcionado por administrador.
+
+
+
+
+
+
+
+
+
+
+
+
+Nombre del caso de uso	Administración_de_proyecto
+Actores Participantes	Administrador
+Flujos de eventos	1.- Administrador recibe información de solicitud de registro del participante.
+2.- Administrador evalúa registro a partir de un contenedor input de tipo radio.
+3.-  Administrador envía resultado a GPI.
+4.- GPI valida información.
+5.- GPI guarda información.
+6.- GPI envía notificación de la evaluación que ha realizado el administrador al participante.
+Condición de entrada	Administrador debe estar autentificado en el sistema GPI.
+Condición de salida	GPI almacena resultado de evaluación.
+Requerimientos de calidad 	Participante envió sus datos correctamente para ser evaluados.
+
+
+Nombre del escenario	Administración_de_proyecto
+Actores participantes	Administrador
+Flujos de eventos	1.	El administrador recibe información acerca de la solicitud de registro del participante.
+2.	Administrador evaluar que los datos contenidos en el registro sean correctos.
+3.	Administrador envía información de resultados a GPI.
+4.	Administrador coordina la validación de información del GPI.
+5.	GPI guarda información.
+6.	GPI envía notificación de evaluación realizado por el administrador.
+
+
+
+
+
+
+
+
+
+Diagrama BPMN
+Excepcionales.
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
